@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Ismene's Birthday Trip · Bali 2026</title>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D98A;
+    --teal: #1A6B6B;
+    --teal-dark: #0F4444;
+    --cream: #FAF7F2;
+    --warm-white: #FFFDF9;
+    --text: #2C2C2C;
+    --text-light: #6B6B6B;
+    --family: #E8734A;
+    --couple: #9B59B6;
+    --ismene: #2ECC71;
+    --free: #3498DB;
+    --border: #E8E0D0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(160deg, var(--teal-dark) 0%, var(--teal) 100%);
+    padding: 32px 20px 28px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero-sub {
+    font-size: 13px;
+    opacity: 0.75;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+  }
+  .hero-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: white;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    -webkit-overflow-scrolling: touch;
+  }
+  .legend::-webkit-scrollbar { display: none; }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    font-size: 11px;
+    color: var(--text-light);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* DAY TABS */
+  .day-tabs {
+    display: flex;
+    overflow-x: auto;
+    background: white;
+    border-bottom: 2px solid var(--border);
+    -webkit-overflow-scrolling: touch;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .day-tabs::-webkit-scrollbar { display: none; }
+  .day-tab {
+    flex-shrink: 0;
+    padding: 12px 16px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    min-width: 72px;
+  }
+  .day-tab .tab-date {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-light);
+    line-height: 1;
+  }
+  .day-tab .tab-day {
+    font-size: 10px;
+    color: var(--text-light);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .day-tab.active {
+    border-bottom-color: var(--teal);
+  }
+  .day-tab.active .tab-date,
+  .day-tab.active .tab-day {
+    color: var(--teal);
+  }
+
+  /* CONTENT */
+  .day-content { display: none; padding: 16px; }
+  .day-content.active { display: block; }
+
+  /* DAY HEADER */
+  .day-header {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .day-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    margin-bottom: 4px;
+  }
+  .day-subtitle {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+  .day-highlight {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: #FFF9EE;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: var(--teal-dark);
+  }
+
+  /* COUPLE TIME BANNER */
+  .couple-banner {
+    background: linear-gradient(135deg, #6C3483, #9B59B6);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .couple-banner-icon { font-size: 24px; }
+  .couple-banner-title { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+  .couple-banner-sub { font-size: 12px; opacity: 0.85; }
+
+  /* TIMELINE */
+  .timeline { position: relative; }
+  .timeline-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 4px;
+    position: relative;
+  }
+  .timeline-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 44px;
+  }
+  .timeline-time {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-light);
+    white-space: nowrap;
+    padding-top: 14px;
+  }
+  .timeline-connector {
+    width: 2px;
+    flex: 1;
+    background: var(--border);
+    margin: 4px 0;
+    min-height: 20px;
+  }
+  .timeline-item:last-child .timeline-connector { display: none; }
+
+  .timeline-card {
+    flex: 1;
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 4px;
+    border: 1px solid transparent;
+  }
+  .timeline-card.family {
+    background: #FFF4EE;
+    border-color: #F0C5AD;
+  }
+  .timeline-card.couple {
+    background: #F9F0FF;
+    border-color: #D9B5F5;
+  }
+  .timeline-card.ismene {
+    background: #EEFAF3;
+    border-color: #A8E6C0;
+  }
+  .timeline-card.free {
+    background: #EEF5FF;
+    border-color: #B5CFF5;
+  }
+  .timeline-card.info {
+    background: #F8F8F8;
+    border-color: var(--border);
+  }
+  .timeline-card.sleep {
+    background: #F0F8FF;
+    border-color: #BDD7EE;
+  }
+
+  .card-type {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 3px;
+  }
+  .family .card-type { color: var(--family); }
+  .couple .card-type { color: var(--couple); }
+  .ismene .card-type { color: var(--ismene); }
+  .free .card-type { color: var(--free); }
+  .info .card-type { color: var(--text-light); }
+  .sleep .card-type { color: #5B9BD5; }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .card-detail {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+  .card-emoji { font-size: 20px; float: right; margin-left: 8px; margin-top: -2px; }
+
+  /* SPLIT CARD */
+  .split-timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    flex: 1;
+    margin-bottom: 4px;
+  }
+  .split-card {
+    border-radius: 14px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+  }
+  .split-card.couple {
+    background: #F9F0FF;
+    border-color: #D9B5F5;
+  }
+  .split-card.ismene {
+    background: #EEFAF3;
+    border-color: #A8E6C0;
+  }
+  .split-card.free {
+    background: #EEF5FF;
+    border-color: #B5CFF5;
+  }
+  .split-card .card-type { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 3px; }
+  .split-card.couple .card-type { color: var(--couple); }
+  .split-card.ismene .card-type { color: var(--ismene); }
+  .split-card.free .card-type { color: var(--free); }
+  .split-card .card-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .split-card .card-detail { font-size: 11px; color: var(--text-light); }
+
+  /* CHECKLIST SECTION */
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-light);
+    margin: 20px 0 10px;
+    padding-left: 4px;
+  }
+
+  /* RESERVATION PAGE */
+  .reservation-group {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .reservation-group-header {
+    padding: 12px 16px;
+    background: var(--teal);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .res-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .res-item:last-child { border-bottom: none; }
+  .res-item:active { background: #f5f5f5; }
+  .res-checkbox {
+    width: 22px; height: 22px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .res-item.done .res-checkbox {
+    background: var(--teal);
+    border-color: var(--teal);
+  }
+  .res-item.done .res-checkbox::after {
+    content: '✓';
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .res-item.done .res-text { opacity: 0.5; }
+  .res-item.done .res-title { text-decoration: line-through; }
+  .res-text { flex: 1; }
+  .res-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .res-detail { font-size: 12px; color: var(--text-light); }
+  .res-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-top: 4px;
+    display: inline-block;
+  }
+  .badge-paid { background: #FFF0E8; color: var(--family); }
+  .badge-free { background: #EEFAF3; color: var(--ismene); }
+  .badge-important { background: #F9F0FF; color: var(--couple); }
+
+  /* INFO PAGE */
+  .info-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .info-card-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .info-row {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { font-size: 12px; color: var(--text-light); margin-bottom: 2px; }
+  .info-value { font-size: 14px; font-weight: 600; color: var(--text); }
+  .info-value.highlight { color: var(--teal); }
+  .call-btn {
+    background: var(--teal);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* BOTTOM NAV */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    background: white;
+    border-top: 1px solid var(--border);
+    display: flex;
+    padding-bottom: env(safe-area-inset-bottom);
+    z-index: 200;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+  }
+  .nav-item {
+    flex: 1;
+    padding: 10px 0 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav-icon { font-size: 22px; line-height: 1; }
+  .nav-label { font-size: 10px; margin-top: 3px; color: var(--text-light); font-weight: 600; }
+  .nav-item.active .nav-label { color: var(--teal); }
+  .nav-item.active .nav-icon { transform: scale(1.1); }
+
+  /* PAGES */
+  .page { display: none; padding-bottom: 80px; }
+  .page.active { display: block; }
+
+  /* SUMMARY */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .summary-card {
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .summary-num { font-size: 28px; font-weight: 800; }
+  .summary-label { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+  .couple-time .summary-num { color: var(--couple); }
+  .family-time .summary-num { color: var(--family); }
+  .ismene-time .summary-num { color: var(--ismene); }
+  .activities-num .summary-num { color: var(--teal); }
+
+  .note-card {
+    background: #FFFBEE;
+    border: 1px solid #F0D98A;
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--teal-dark);
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .note-card strong { color: var(--teal-dark); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">🌴 Birthday Trip</div>
+  <h1>Ismene's <span>Bali</span> 2026</h1>
+  <div class="hero-sub">The Ritz-Carlton, Nusa Dua · 5–10 July</div>
+  <div class="hero-meta">
+    <div class="hero-badge">✈️ 5 Nights</div>
+    <div class="hero-badge">👨‍👩‍👧 3+1</div>
+    <div class="hero-badge">🎂 Ismene 2歲</div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div class="nav-item active" onclick="showPage('schedule')">
+    <div class="nav-icon">📅</div>
+    <div class="nav-label">行程</div>
+  </div>
+  <div class="nav-item" onclick="showPage('reserve')">
+    <div class="nav-icon">☑️</div>
+    <div class="nav-label">預約</div>
+  </div>
+  <div class="nav-item" onclick="showPage('info')">
+    <div class="nav-icon">ℹ️</div>
+    <div class="nav-label">資訊</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE: SCHEDULE ==================== -->
+<div class="page active" id="page-schedule">
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--family)"></div>全家</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--couple)"></div>二人時間</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--ismene)"></div>Ismene+工人</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--free)"></div>個人自由</div>
+  </div>
+
+  <!-- DAY TABS -->
+  <div class="day-tabs" id="dayTabs">
+    <div class="day-tab active" onclick="showDay(0)">
+      <div class="tab-date">5</div>
+      <div class="tab-day">日 Sun</div>
+    </div>
+    <div class="day-tab" onclick="showDay(1)">
+      <div class="tab-date">6</div>
+      <div class="tab-day">一 Mon</div>
+    </div>
+    <div class="day-tab" onclick="showDay(2)">
+      <div class="tab-date">7</div>
+      <div class="tab-day">二 Tue</div>
+    </div>
+    <div class="day-tab" onclick="showDay(3)">
+      <div class="tab-date">8</div>
+      <div class="tab-day">三 Wed</div>
+    </div>
+    <div class="day-tab" onclick="showDay(4)">
+      <div class="tab-date">9</div>
+      <div class="tab-day">四 Thu</div>
+    </div>
+    <div class="day-tab" onclick="showDay(5)">
+      <div class="tab-date">10</div>
+      <div class="tab-day">五 Fri</div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 1: July 5 ===== -->
+  <div class="day-content active" id="day-0">
+    <div class="day-header">
+      <div class="day-title">抵達日 ✈️</div>
+      <div class="day-subtitle">7月5日（週日）</div>
+      <div class="day-highlight">今晚唔趕，讓 Ismene 適應新環境。安頓好就算贏。</div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-line">
+          <div class="timeline-time">17:40</div>
+          <div class="timeline-connector"></div>
+        </div>
+        <div class="timeline-card info">
+          <div class="card-title"><span class="card-emoji">🛬</span>降落 Bali DPS</div>
+          <div class="card-detail">辦理入境 · 取行李</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line">
+          <div class="timeline-time">19:00</div>
+          <div class="timeline-connector"></div>
+        </div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🏨</span>酒店 Check-in</div>
+          <div class="card-detail">車程約 30 分鐘 · 告知禮賓部 Pre-Birthday 安排</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line">
+          <div class="timeline-time">19:30</div>
+          <div class="timeline-connector"></div>
+        </div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍽️</span>全家晚餐 · The Beach Grill</div>
+          <div class="card-detail">Ritz-Carlton 海邊餐廳 · 輕食為主 · 海鮮烤物 · Kids 菜單齊 · 不用出酒店</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line">
+          <div class="timeline-time">20:30</div>
+          <div class="timeline-connector"></div>
+        </div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🛁</span>沐浴 + 故事書</div>
+          <div class="card-detail">睡前程序，新環境提早開始</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line">
+          <div class="timeline-time">21:00</div>
+          <div class="timeline-connector"></div>
+        </div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🌙</span>氹瞓覺（9:00–9:30）</div>
+          <div class="card-detail">首晚可能遲少少，正常</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line">
+          <div class="timeline-time">21:30</div>
+          <div class="timeline-connector"></div>
+        </div>
+        <div class="timeline-card couple">
+          <div class="card-type">二人時間</div>
+          <div class="card-title"><span class="card-emoji">🍹</span>PADI Bar / Kayuputi Bar</div>
+          <div class="card-detail">第一晚唔使出酒店 · 海灘旁調酒 · 慶祝出發 · Open late</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 2: July 6 ===== -->
+  <div class="day-content" id="day-1">
+    <div class="day-header">
+      <div class="day-title">酒店 Ritz Kids 日 🎨</div>
+      <div class="day-subtitle">7月6日（週一）</div>
+      <div class="day-highlight">⭐ 全家外出晚餐：Cuca Restaurant · 二人宵夜 Manarai Beach House</div>
+    </div>
+    <div class="couple-banner">
+      <div class="couple-banner-icon">💜</div>
+      <div>
+        <div class="couple-banner-title">今日二人 Highlight</div>
+        <div class="couple-banner-sub">Snorkeling 14:00 · Tanjung Benoa · Manarai Beach House Bar 21:30</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">8:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍳</span>全家早餐</div>
+          <div class="card-detail">酒店自助早餐 · Nusa Restaurant · Ismene 一起食</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">9:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🕯️</span>晨間祭祀觀摩</div>
+          <div class="card-detail">集合：The Spa Lobby · 巴厘式供品儀式 · Ismene 愛花 + 顏色</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">10:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card ismene">
+            <div class="card-type">⭐ Benson + Ismene</div>
+            <div class="card-title">🏊 父女游水時間</div>
+            <div class="card-detail">Ritz Kids Pool · 踩水 · 玩水槍 · 純父女時間</div>
+          </div>
+          <div class="split-card free">
+            <div class="card-type">Winnie 自由</div>
+            <div class="card-title">🌊 海灘 / 按摩</div>
+            <div class="card-detail">個人放鬆時間</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">11:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card ismene">
+            <div class="card-type">Winnie + Ismene</div>
+            <div class="card-title">🎨 Ritz Kids</div>
+            <div class="card-detail">Paper Weaving · Winnie 接手陪</div>
+          </div>
+          <div class="split-card free">
+            <div class="card-type">Benson 自由</div>
+            <div class="card-title">💆 按摩</div>
+            <div class="card-detail">The Ritz-Carlton Spa · 個人放鬆</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">11:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🌿</span>Jamu Tasting</div>
+          <div class="card-detail">Hotel Lobby · 傳統巴厘草藥品嚐</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">12:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍛</span>Bumbu Bali 午餐</div>
+          <div class="card-detail">Tanjung Benoa · ~15 分鐘 · 正宗巴里島菜 · 有文化舞蹈 · 需 14:00 前返酒店</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">14:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">⭐ 二人</div>
+            <div class="card-title">🤿 Snorkeling</div>
+            <div class="card-detail">Tanjung Benoa · ~15 分鐘車程 · 二人活動</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人</div>
+            <div class="card-title">😴 Ismene 午睡</div>
+            <div class="card-detail">工人看顧</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">16:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">二人</div>
+            <div class="card-title">🛕 Temple Tour</div>
+            <div class="card-detail">Meet at Spa Lobby</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人 + Ismene</div>
+            <div class="card-title">🏖️ 沙灘散步</div>
+            <div class="card-detail">醒來放電</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">17:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">Benson + Winnie</div>
+            <div class="card-title">🥞 Dadar Gulung Making</div>
+            <div class="card-detail">The Beach Grill · 食物主題</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人 + Ismene</div>
+            <div class="card-title">🏊 Slide and Swim</div>
+            <div class="card-detail">Ritz Kids Pool · 每日放電</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">18:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🌅</span>海灘散步 / 自由時間</div>
+          <div class="card-detail">酒店沙灘 · 出發食晚飯前放鬆</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">19:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">⭐ 全家外出晚餐</div>
+          <div class="card-title"><span class="card-emoji">🍽️</span>Cuca Restaurant</div>
+          <div class="card-detail">Jimbaran · ~20 分鐘 · Creative cuisine · Kids 可食 · 20:45 返回酒店 · 需提前訂位</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">20:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🛁</span>沐浴 + 故事書</div>
+          <div class="card-detail">開始睡前程序</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">21:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🌙</span>氹瞓覺（9:00–9:30）</div>
+          <div class="card-detail">哄睡，工人輪流幫手</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">21:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card couple">
+          <div class="card-type">🍸 二人宵夜</div>
+          <div class="card-title"><span class="card-emoji">🌊</span>Manarai Beach House</div>
+          <div class="card-detail">Nusa Dua Tourism Complex · 5 分鐘 · 海灘調酒 · Open till 1am</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 3: July 7 ===== -->
+  <div class="day-content" id="day-2">
+    <div class="day-header">
+      <div class="day-title">海洋探索日 🐠</div>
+      <div class="day-subtitle">7月7日（週二）</div>
+      <div class="day-highlight">⭐ 二人時間：AYANA Rock Bar 日落 + Jimbaran 沙灘晚餐</div>
+    </div>
+    <div class="couple-banner">
+      <div class="couple-banner-icon">💜</div>
+      <div>
+        <div class="couple-banner-title">今日二人 Highlight</div>
+        <div class="couple-banner-sub">AYANA Rock Bar 14:30 · 懸崖 Cocktail 日落 + Jimbaran 晚餐 19:00</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">8:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍳</span>全家早餐</div>
+          <div class="card-detail">酒店自助早餐 · Nusa Restaurant · Ismene 一起食</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">9:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家出發</div>
+          <div class="card-title"><span class="card-emoji">🚗</span>前往 Tanjung Benoa</div>
+          <div class="card-detail">車程約 10 分鐘 · 酒店對出海灘區</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">9:15</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">⭐ 全家</div>
+          <div class="card-title"><span class="card-emoji">🐠</span>玻璃底船 Glass Bottom Boat</div>
+          <div class="card-detail">船底透明 · 珊瑚礁 + 熱帶魚 · Ismene 貼住玻璃睇魚 · 約 45 分鐘</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">10:15</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🏖️</span>Tanjung Benoa 海灘玩樂</div>
+          <div class="card-detail">沙灘 · 淺水區踩水 · Ismene 玩沙 · 輕鬆時光</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">11:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍽️</span>海邊午餐</div>
+          <div class="card-detail">Tanjung Benoa 海鮮餐廳 · 輕食 · 返酒店前</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">12:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card info">
+          <div class="card-title"><span class="card-emoji">🚗</span>返回酒店</div>
+          <div class="card-detail">車程約 10 分鐘</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">14:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">⭐ 二人出發</div>
+            <div class="card-title">🚗 前往 AYANA Resort · Jimbaran</div>
+            <div class="card-detail">車程 ~25 分鐘 · Bukit 懸崖區</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人</div>
+            <div class="card-title">😴 Ismene 午睡</div>
+            <div class="card-detail">工人看顧</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">14:30</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">⭐⭐ 二人 · 世界級體驗</div>
+            <div class="card-title">🍸 AYANA Rock Bar · 懸崖日落</div>
+            <div class="card-detail">懸崖底海浪直拍 · Cocktail + 日落 · 提前訂位 · 最浪漫 Sunset Bar</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人 + Ismene</div>
+            <div class="card-title">🏊 Slide and Swim</div>
+            <div class="card-detail">Ritz Kids Pool · 工人陪玩</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">18:15</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">二人</div>
+            <div class="card-title">🌅 Rock Bar 日落高峰</div>
+            <div class="card-detail">Bali 日落約 18:15 · 坐定定睇 · 最後一杯</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人 + Ismene</div>
+            <div class="card-title">🎠 自由玩樂</div>
+            <div class="card-detail">酒店兒童設施 · 等晚餐</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">19:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">⭐ 二人晚餐</div>
+            <div class="card-title">🦞 Jimbaran 沙灘海鮮</div>
+            <div class="card-detail">AYANA 附近 · 露天沙灘桌 · 燒烤海鮮 · 20:30 返回酒店</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人 + Ismene</div>
+            <div class="card-title">🍽️ Ismene 晚餐</div>
+            <div class="card-detail">Kids Eat Free · 酒店餐廳 · 工人照顧</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">20:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🛁</span>沐浴 + 故事書</div>
+          <div class="card-detail">開始睡前程序</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">21:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🌙</span>氹瞓覺（9:00–9:30）</div>
+          <div class="card-detail">哄睡，工人輪流幫手</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">21:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card couple">
+          <div class="card-type">二人</div>
+          <div class="card-title"><span class="card-emoji">🏡</span>返回酒店 · 自由時間</div>
+          <div class="card-detail">Rock Bar + 晚餐後放鬆 · 酒店 Bar 隨意</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 4: July 8 ===== -->
+  <div class="day-content" id="day-3">
+    <div class="day-header">
+      <div class="day-title">Waterbom 水日 🌊</div>
+      <div class="day-subtitle">7月8日（週三）</div>
+      <div class="day-highlight">⭐ 今晚全家 Jimbaran 海鮮晚餐！ 二人宵夜：King Cole Bar · St. Regis</div>
+    </div>
+    <div class="couple-banner">
+      <div class="couple-banner-icon">💜</div>
+      <div>
+        <div class="couple-banner-title">今日二人 Highlight</div>
+        <div class="couple-banner-sub">Couple Spa 14:00 · The Ritz-Carlton Spa + 全家 Jimbaran 晚餐 19:00 + King Cole Bar 21:30</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">8:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍳</span>全家早餐</div>
+          <div class="card-detail">酒店自助早餐 · Nusa Restaurant · Ismene 一起食</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">9:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家出發</div>
+          <div class="card-title"><span class="card-emoji">🚗</span>前往 Waterbom Bali</div>
+          <div class="card-detail">Kuta · 車程約 30 分鐘</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">9:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">⭐ 全家</div>
+          <div class="card-title"><span class="card-emoji">💦</span>Waterbom Bali</div>
+          <div class="card-detail">Toddler Splash Zone（1-3歲專區）· Ismene 嘅水上天堂</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">12:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍽️</span>Waterbom 午餐</div>
+          <div class="card-detail">園內餐廳</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">13:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card info">
+          <div class="card-title"><span class="card-emoji">🚗</span>返回酒店</div>
+          <div class="card-detail">車程約 30 分鐘</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">14:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">⭐ 二人</div>
+            <div class="card-title">💆 Couple Spa</div>
+            <div class="card-detail">The Ritz-Carlton Spa · Waterbom 後放鬆</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人</div>
+            <div class="card-title">😴 Ismene 午睡</div>
+            <div class="card-detail">工人看顧</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">16:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">二人</div>
+            <div class="card-title">🏖️ 海灘散步</div>
+            <div class="card-detail">Nusa Dua 平靜海灘</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人 + Ismene</div>
+            <div class="card-title">🏺 Ketupat Demo</div>
+            <div class="card-detail">Hotel Lobby · 觀看</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">17:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card ismene">
+            <div class="card-type">⭐ Benson + Ismene</div>
+            <div class="card-title">🏊 父女游水時間</div>
+            <div class="card-detail">Ritz Kids Pool · Slide and Swim · 放電</div>
+          </div>
+          <div class="split-card free">
+            <div class="card-type">Winnie 自由</div>
+            <div class="card-title">🌿 休息 / 海灘</div>
+            <div class="card-detail">Spa 後放鬆</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">18:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家出發</div>
+          <div class="card-title"><span class="card-emoji">🚗</span>前往 Jimbaran 全家晚餐</div>
+          <div class="card-detail">車程 ~15 分鐘 · Ismene 愛沙灘氣氛 · 提早出發輕鬆安頓</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">19:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">⭐ 全家晚餐</div>
+          <div class="card-title"><span class="card-emoji">🦞</span>Jimbaran 沙灘海鮮</div>
+          <div class="card-detail">Menega Cafe · 露天沙灘桌 · 燒烤大蝦/龍蝦/魚 · Ismene 玩沙超開心 · 20:45 返回酒店 · 需提前訂位</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">20:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🛁</span>沐浴 + 故事書</div>
+          <div class="card-detail">開始睡前程序</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">21:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🌙</span>氹瞓覺（9:00–9:30）</div>
+          <div class="card-detail">哄睡，工人輪流幫手</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">21:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card couple">
+          <div class="card-type">🍸 二人宵夜</div>
+          <div class="card-title"><span class="card-emoji">🥂</span>King Cole Bar · St. Regis</div>
+          <div class="card-detail">Nusa Dua · 5 分鐘 · 精品調酒 + 香檳 · 奢華環境 · Open till late</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 5: July 9 ===== -->
+  <div class="day-content" id="day-4">
+    <div class="day-header">
+      <div class="day-title">🎂 生日前夕特別日</div>
+      <div class="day-subtitle">7月9日（週四）· Ismene 明天 2 歲！</div>
+      <div class="day-highlight">⭐ 亮點：GWK Cultural Park（全家）+ Kayuputi Romantic Dinner（二人）</div>
+    </div>
+    <div class="couple-banner">
+      <div class="couple-banner-icon">💜</div>
+      <div>
+        <div class="couple-banner-title">今日最特別一晚</div>
+        <div class="couple-banner-sub">Kayuputi Romantic Dinner 21:30 · 提前安排 Ismene 生日驚喜</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">8:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍳</span>全家早餐</div>
+          <div class="card-detail">酒店自助早餐 · Nusa Restaurant · Ismene 一起食</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">9:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍳</span>特別早餐</div>
+          <div class="card-detail">預訂 In-Room Breakfast · 製造驚喜感</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">9:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家出發</div>
+          <div class="card-title"><span class="card-emoji">🚗</span>前往 GWK Cultural Park</div>
+          <div class="card-detail">車程 ~30 分鐘 · Bukit Peninsula</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">10:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">⭐ 全家</div>
+          <div class="card-title"><span class="card-emoji">🦅</span>GWK Cultural Park</div>
+          <div class="card-detail">121 米金鷹神像 · 文化表演 · Ismene 見到大雕像一定反應大</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">11:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家出發</div>
+          <div class="card-title"><span class="card-emoji">🚗</span>GWK → Sundara（Jimbaran）</div>
+          <div class="card-detail">車程 ~15 分鐘 · 直接去午餐</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">12:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🎉</span>Sundara 生日前夕午餐</div>
+          <div class="card-detail">Four Seasons Jimbaran · ~20 分鐘 · 海灘旁 · 慶祝氣氛 · 需提前訂位</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">14:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">二人</div>
+            <div class="card-title">🎈 生日佈置安排</div>
+            <div class="card-detail">聯絡禮賓部 · 房間氣球/蛋糕</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人</div>
+            <div class="card-title">😴 Ismene 午睡</div>
+            <div class="card-detail">工人看顧</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">16:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card couple">
+            <div class="card-type">二人</div>
+            <div class="card-title">☕ Coffee Art</div>
+            <div class="card-detail">Bejana · Resort Activity</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">工人 + Ismene</div>
+            <div class="card-title">🌿 Visit Chef Garden</div>
+            <div class="card-detail">食物主題 · Ismene 必愛</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">17:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card ismene">
+            <div class="card-type">⭐ Benson + Ismene</div>
+            <div class="card-title">🏊 生日前夕父女游水</div>
+            <div class="card-detail">Ritz Kids Pool · 明天就係壽星 · 最後放電</div>
+          </div>
+          <div class="split-card free">
+            <div class="card-type">Winnie 自由</div>
+            <div class="card-title">🌊 海灘 / 休息</div>
+            <div class="card-detail">放鬆準備晚上</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">18:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">⭐⭐ 全家 · 生日前夕驚喜</div>
+          <div class="card-title"><span class="card-emoji">🎂</span>Beach Bonfire · Pre-Birthday！</div>
+          <div class="card-detail">酒店帶 Ismene 小蛋糕去 Bonfire · 唱生日歌 · 拍照！</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">18:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">💃</span>Balinese Dance</div>
+          <div class="card-detail">Ismene 最後一晚看，明天就係壽星</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">19:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">⭐ 全家晚餐</div>
+          <div class="card-title"><span class="card-emoji">🍽️</span>全家生日前夕晚餐</div>
+          <div class="card-detail">The Beach Grill · Ritz-Carlton · 海鮮烤物 · 牛排 · 生日前夕特別菜單 · 可預訂 Birthday Cake 驚喜</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">20:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🛁</span>沐浴 + 故事書</div>
+          <div class="card-detail">今晚可能興奮，預早開始睡前程序</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">21:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card sleep">
+          <div class="card-type">Ismene</div>
+          <div class="card-title"><span class="card-emoji">🌙</span>氹瞓覺（9:00–9:30）</div>
+          <div class="card-detail">哄睡，工人幫手</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">21:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card couple">
+          <div class="card-type">⭐⭐ 最特別一晚</div>
+          <div class="card-title"><span class="card-emoji">🌊</span>Kayuputi Romantic Dinner</div>
+          <div class="card-detail">峇里頂級海景餐廳 · 生日前夕浪漫晚餐 · 提前訂位</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 6: July 10 ===== -->
+  <div class="day-content" id="day-5">
+    <div class="day-header">
+      <div class="day-title">離開日 ✈️</div>
+      <div class="day-subtitle">7月10日（週五）· 航班 16:15</div>
+      <div class="day-highlight">13:30 最遲離開酒店 · Ismene 明天正式 2 歲生日！</div>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">9:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🎂</span>早餐 · 預祝 Ismene 明天生日！</div>
+          <div class="card-detail">酒店 Outdoor Terrace · 面海最後一頓早餐</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">10:00</div><div class="timeline-connector"></div></div>
+        <div class="split-timeline">
+          <div class="split-card free">
+            <div class="card-type">Benson 自由</div>
+            <div class="card-title">🏊 最後一泳</div>
+            <div class="card-detail">酒店泳池</div>
+          </div>
+          <div class="split-card ismene">
+            <div class="card-type">Winnie + Ismene</div>
+            <div class="card-title">🎨 Ritz Kids</div>
+            <div class="card-detail">Fun Cardio / 最後活動</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">11:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🌸</span>Flower Arrangement</div>
+          <div class="card-detail">Hotel Lobby · Ismene 帶走一盆作紀念</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">12:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card info">
+          <div class="card-title"><span class="card-emoji">🧳</span>Checkout + 行李寄存</div>
+          <div class="card-detail">酒店寄存，繼續用設施到出發</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">13:00</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">全家</div>
+          <div class="card-title"><span class="card-emoji">🍽️</span>最後午餐</div>
+          <div class="card-detail">酒店輕食</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">13:30</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card info">
+          <div class="card-title"><span class="card-emoji">🚗</span>出發機場</div>
+          <div class="card-detail">酒店安排送機</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">14:15</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card info">
+          <div class="card-title"><span class="card-emoji">🛫</span>抵達 DPS 辦理登機</div>
+          <div class="card-detail">16:15 航班 · 提前 2 小時</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-line"><div class="timeline-time">16:15</div><div class="timeline-connector"></div></div>
+        <div class="timeline-card family">
+          <div class="card-type">回家</div>
+          <div class="card-title"><span class="card-emoji">✈️</span>離港 · See You HK!</div>
+          <div class="card-detail">Ismene 明天 11日正式 2 歲生日 🎂</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end page-schedule -->
+
+
+<!-- ==================== PAGE: RESERVE ==================== -->
+<div class="page" id="page-reserve">
+  <div style="padding: 16px; padding-bottom: 0;">
+    <div class="note-card">
+      📞 <strong>所有酒店活動</strong>：入住後即撥 Ext 0 預約（需提前 24 小時）<br>
+      💜 有 <strong>⭐</strong> = 強烈推薦，唔好錯過<br><br>
+      🍽️ <strong>Kids Eat Free</strong>：每晚記得用！1次 Lunch 或 Dinner 免費（最多2小孩）<br>
+      💰 <strong>10% 折扣</strong>：所有餐廳 + Spa 成人九折，每次結帳都報 Room Number！
+    </div>
+  </div>
+
+  <div style="padding: 0 16px;">
+    <!-- Resort Activities -->
+    <div class="reservation-group">
+      <div class="reservation-group-header">💆 Spa（需提前預約）</div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Snorkeling × 2人</div>
+          <div class="res-detail">週一 7/6 · 14:00 · Tanjung Benoa · 網上預訂或酒店安排</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Couple Spa × 2人</div>
+          <div class="res-detail">週三 7/8 · 14:00 · The Ritz-Carlton Spa（Waterbom 後）</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">Jamu Tasting</div>
+          <div class="res-detail">週一 7/6 · 11:30 · Hotel Lobby</div>
+          <span class="res-badge badge-free">免費</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">Resort Temple Tour</div>
+          <div class="res-detail">週五 7/10 · 16:00 · Spa Lobby（已更正：週五才有）</div>
+          <span class="res-badge badge-free">免費</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Photoshoot Session</div>
+          <div class="res-detail">任何一天 9am–5pm · 30分鐘 · 多個酒店美景位 · 1張免費印刷</div>
+          <span class="res-badge badge-free">含1張免費</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spa -->
+    <div class="reservation-group">
+      <div class="reservation-group-header">💆 The Ritz-Carlton Spa</div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Couples Spa Treatment</div>
+          <div class="res-detail">週二 7/7 · 14:00-15:00</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Restaurants -->
+    <div class="reservation-group">
+      <div class="reservation-group-header">🍽️ 餐廳訂位</div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐⭐ Kayuputi Restaurant</div>
+          <div class="res-detail">週四 7/9 · 21:30 · 2位 · Romantic Dinner</div>
+          <span class="res-badge badge-important">生日前夕</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Kayuputi / Fine Dining</div>
+          <div class="res-detail">週二 7/7 · 21:30 · 2位</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Menega Cafe · Jimbaran 海鮮</div>
+          <div class="res-detail">週三 7/8 · 19:00 · 全家 3-4位 · 露天沙灘 · 提前訂位</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concierge -->
+    <div class="reservation-group">
+      <div class="reservation-group-header">🎈 禮賓部特別安排</div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Ismene Pre-Birthday 佈置</div>
+          <div class="res-detail">7/9 房間氣球 + Beach Bonfire 小蛋糕</div>
+          <span class="res-badge badge-important">生日驚喜</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">In-Room Breakfast</div>
+          <div class="res-detail">7/9 早上 · 特別生日前夕早餐</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outside Restaurants -->
+    <div class="reservation-group">
+      <div class="reservation-group-header">🍽️ 外出餐廳（提前訂位）</div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Bumbu Bali Restaurant</div>
+          <div class="res-detail">週一 7/6 · 12:00 午餐 · Tanjung Benoa · +62 361 774502</div>
+          <span class="res-badge badge-paid">需訂位</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Cuca Restaurant · 全家晚餐</div>
+          <div class="res-detail">週一 7/6 · 19:00 · 全家 4位 · Jimbaran · cucabali.com · 需提前訂位</div>
+          <span class="res-badge badge-paid">需訂位</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Menega Cafe · Jimbaran 全家晚餐</div>
+          <div class="res-detail">週三 7/8 · 19:00 · 全家 4位 · 露天沙灘海鮮 · +62 361 704231</div>
+          <span class="res-badge badge-paid">需訂位</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">King Cole Bar · St. Regis Bali</div>
+          <div class="res-detail">週三 7/8 · 21:30+ · 2位 · Nusa Dua · 5 分鐘車程 · 唔需訂位</div>
+          <span class="res-badge badge-free">無需訂位</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Sundara · Four Seasons Jimbaran</div>
+          <div class="res-detail">週四 7/9 · 12:00 生日前夕午餐 · 海灘旁 · fourseasons.com/jimbaran</div>
+          <span class="res-badge badge-paid">需訂位</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Excursions -->
+    <div class="reservation-group">
+      <div class="reservation-group-header">🚗 外出行程（提前網上訂票）</div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐⭐ Kecak Fire Dance · Uluwatu</div>
+          <div class="res-detail">週二 7/7 · 18:00 · 出發 16:00 · 網上買票 / klook.com</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ GWK Cultural Park</div>
+          <div class="res-detail">週四 7/9 · 10:00 · 出發 9:30 · 網上預訂 gwkbali.com</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">🐠 Tanjung Benoa 玻璃底船</div>
+          <div class="res-detail">週二 7/7 · 9:15 · 現場或酒店禮賓部代訂 · ~45 分鐘</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">⭐ Waterbom Bali</div>
+          <div class="res-detail">週三 7/8 · 出發 9:00 · Toddler Zone</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+      <div class="res-item done" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">機場接送（去程）✅ 已確認</div>
+          <div class="res-detail">7/5 · CX785 · 17:40 · Toyota Vellfire · IDR 950,000</div>
+          <span class="res-badge badge-free">已確認</span>
+        </div>
+      </div>
+      <div class="res-item" onclick="toggleDone(this)">
+        <div class="res-checkbox"></div>
+        <div class="res-text">
+          <div class="res-title">機場送機（回程）</div>
+          <div class="res-detail">7/10 · 13:30 出發 · 聯絡 Concierge 安排</div>
+          <span class="res-badge badge-paid">收費</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end page-reserve -->
+
+
+<!-- ==================== PAGE: INFO ==================== -->
+<div class="page" id="page-info">
+  <div style="padding: 16px;">
+
+    <!-- Summary -->
+    <div class="summary-grid">
+      <div class="summary-card couple-time">
+        <div class="summary-num">~14.5</div>
+        <div class="summary-label">小時二人時間</div>
+      </div>
+      <div class="summary-card family-time">
+        <div class="summary-num">5</div>
+        <div class="summary-label">夜 Beach Bonfire</div>
+      </div>
+      <div class="summary-card ismene-time">
+        <div class="summary-num">2歲</div>
+        <div class="summary-label">Ismene 7/11 生日</div>
+      </div>
+      <div class="summary-card activities-num">
+        <div class="summary-num">5</div>
+        <div class="summary-label">Slide & Swim Days</div>
+      </div>
+    </div>
+
+    <!-- Hotel -->
+    <div class="info-card">
+      <div class="info-card-header">🏨 酒店資訊</div>
+      <div class="info-row">
+        <div>
+          <div class="info-label">酒店名稱</div>
+          <div class="info-value">The Ritz-Carlton, Bali · Ritz-Carlton Suite</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">訂房確認號</div>
+        <div class="info-value highlight">79152266</div>
+      </div>
+      <div class="info-row">
+        <div>
+          <div class="info-label">地點</div>
+          <div class="info-value">Nusa Dua, Bali（Sawangan）</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">酒店電話（預約活動）</div>
+        <div class="info-value highlight">Ext 0</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">禮賓部 Email</div>
+        <div class="info-value" style="font-size:12px">rc.dpssw.Concierge@ritzcarlton.com</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">機場代表（抵達聯絡）</div>
+        <div class="info-value highlight">+62 811 388 7871</div>
+      </div>
+      <div class="info-row">
+        <div>
+          <div class="info-label">The Spa 開放時間</div>
+          <div class="info-value">10:00am – 10:00pm</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div>
+          <div class="info-label">Ritz Kids 開放時間</div>
+          <div class="info-value">9:00am – 6:00pm（無需預約）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package Inclusions -->
+    <div class="info-card">
+      <div class="info-card-header">🎁 Ritz Kids Paradise Package 包含</div>
+      <div class="info-row"><div class="info-label">早餐</div><div class="info-value">Senses 餐廳 · 2大人 + 2小孩（每日）</div></div>
+      <div class="info-row"><div class="info-label">Kids Eat Free ⭐</div><div class="info-value" style="color:var(--teal);font-weight:700">每晚 1次 Lunch 或 Dinner 免費！（最多2小孩）</div></div>
+      <div class="info-row"><div class="info-label">10% F&amp;B 折扣</div><div class="info-value" style="color:var(--teal);font-weight:700">所有餐廳食飲九折（成人）</div></div>
+      <div class="info-row"><div class="info-label">10% Spa 折扣</div><div class="info-value" style="color:var(--teal);font-weight:700">Spa 治療九折（成人）</div></div>
+      <div class="info-row"><div class="info-label">Ritz Kids Tent</div><div class="info-value">房內搭帳篷體驗（Ismene 必愛）</div></div>
+      <div class="info-row"><div class="info-label">Ritz Kids Club</div><div class="info-value">每日活動免費參加</div></div>
+      <div class="info-row"><div class="info-label">嬰兒備品</div><div class="info-value">Kids friendly 沐浴用品</div></div>
+      <div class="info-row"><div class="info-label">額外床</div><div class="info-value">工人姐姐用（免費）</div></div>
+    </div>
+
+    <!-- Airport & Levy -->
+    <div class="info-card">
+      <div class="info-card-header">✈️ 機場 & 入境資訊</div>
+      <div class="info-row"><div class="info-label">航班</div><div class="info-value">CX785 · 17:40 抵達 DPS</div></div>
+      <div class="info-row"><div class="info-label">接機車型</div><div class="info-value">Toyota Vellfire · IDR 950,000</div></div>
+      <div class="info-row"><div class="info-label">機場代表</div><div class="info-value">持 RC 牌（無名字）</div></div>
+      <div class="info-row"><div class="info-label">機場聯絡</div><div class="info-value highlight">+62 811 388 7871</div></div>
+      <div class="info-row">
+        <div>
+          <div class="info-label">⚠️ Bali Levy 入境稅</div>
+          <div class="info-value" style="color:#E8734A;font-weight:700">IDR 150,000/人（國際旅客必繳）</div>
+        </div>
+      </div>
+      <div class="info-row"><div class="info-label">出發前</div><div class="info-value" style="font-size:12px">填 Indonesia Arrival Card（出發前3日可填）</div></div>
+    </div>
+
+    <!-- Ismene Schedule -->
+    <div class="info-card">
+      <div class="info-card-header">👶 Ismene 每日時間表</div>
+      <div class="info-row">
+        <div class="info-label">起床</div>
+        <div class="info-value highlight">8:00 AM</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">午睡</div>
+        <div class="info-value highlight">2:00 – 4:00 PM</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">最遲睡覺</div>
+        <div class="info-value highlight">9:30 PM</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">放電黃金時間</div>
+        <div class="info-value">5–6pm Slide & Swim</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Ritz Kids 規定</div>
+        <div class="info-value">4歲以下需父母<strong style="color:var(--ismene)">或工人姐姐</strong>陪同 ✅</div>
+      </div>
+    </div>
+
+    <!-- Ismene Tips -->
+    <div class="info-card">
+      <div class="info-card-header">💡 Ismene 薦骨養育 Tips（旅途適用）</div>
+      <div class="info-row">
+        <div>
+          <div class="info-label">問問題方式</div>
+          <div class="info-value" style="font-size:13px">「你想去泳池定沙灘？」✅<br>「你想去邊度？」❌</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div>
+          <div class="info-label">情緒波動時</div>
+          <div class="info-value" style="font-size:13px">先播音樂，唔係即時處理</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div>
+          <div class="info-label">放電標準</div>
+          <div class="info-value" style="font-size:13px">夠累先瞓得好，唔好怕佢「玩到唔停」</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div>
+          <div class="info-label">讚賞語言</div>
+          <div class="info-value" style="font-size:13px">「You're trying」 ✅<br>唔讚結果，讚過程</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Packing -->
+    <div class="info-card">
+      <div class="info-card-header">🧳 Ismene 行李重點</div>
+      <div class="info-row"><div class="info-label">防曬</div><div class="info-value">嬰兒版 SPF 50+</div></div>
+      <div class="info-row"><div class="info-label">水上用品</div><div class="info-value">浮水背心（Waterbom 日）</div></div>
+      <div class="info-row"><div class="info-label">驅蚊</div><div class="info-value">嬰幼兒驅蚊貼 / 噴霧</div></div>
+      <div class="info-row"><div class="info-label">食物</div><div class="info-value">慣用零食（Bali 食物偏辣）</div></div>
+      <div class="info-row"><div class="info-label">睡眠</div><div class="info-value">白噪音 App（新環境入睡用）</div></div>
+    </div>
+
+    <!-- Key Notes -->
+    <div class="note-card">
+      🎂 <strong>Ismene 生日：7月11日（週六）</strong><br>
+      呢個 trip 係佢嘅 2 歲生日大禮。<br><br>
+      每晚：<strong>Beach Bonfire 6pm → Balinese Dance 6:30pm → 9:30 睡</strong><br>
+      呢個固定儀式幫助 Ismene 認知「夜晚要睡啦」，係全程睡眠質量嘅關鍵。
+    </div>
+
+  </div>
+</div><!-- end page-info -->
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  const idx = ['schedule','reserve','info'].indexOf(name);
+  document.querySelectorAll('.nav-item')[idx].classList.add('active');
+}
+
+function showDay(index) {
+  document.querySelectorAll('.day-content').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('day-' + index).classList.add('active');
+  document.querySelectorAll('.day-tab')[index].classList.add('active');
+  // scroll tab into view
+  const tab = document.querySelectorAll('.day-tab')[index];
+  tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+
+function toggleDone(el) {
+  el.classList.toggle('done');
+}
+
+// Save checklist state to localStorage
+function saveState() {
+  const items = document.querySelectorAll('.res-item');
+  const state = [];
+  items.forEach((item, i) => state.push(item.classList.contains('done')));
+  localStorage.setItem('bali-checklist', JSON.stringify(state));
+}
+
+function loadState() {
+  const saved = localStorage.getItem('bali-checklist');
+  if (!saved) return;
+  const state = JSON.parse(saved);
+  const items = document.querySelectorAll('.res-item');
+  items.forEach((item, i) => {
+    if (state[i]) item.classList.add('done');
+  });
+}
+
+// Auto-save on toggle
+document.querySelectorAll('.res-item').forEach(item => {
+  item.addEventListener('click', () => setTimeout(saveState, 50));
+});
+
+loadState();
+</script>
+</body>
+</html>
